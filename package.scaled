@@ -1,0 +1,7 @@
+   name: ocaml-mode
+ source: git:https://github.com/scaled/ocaml-mode.git
+version: 1.0
+descrip: Provides support for editing OCaml code.
+ weburl: https://github.com/scaled/ocaml-mode
+license: New BSD
+ depend: git:https://github.com/scaled/textmate-grammar.git

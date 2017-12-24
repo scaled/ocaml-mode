@@ -9,13 +9,14 @@ import scaled.code.Indenter
 import scaled.grammar._
 import scaled.code.{CodeConfig, Commenter}
 
-object OCamlConfig extends Config.Defs {
+@Plugin(tag="textmate-grammar")
+class OCamlGrammarPlugin extends GrammarPlugin {
   import EditorConfig._
   import CodeConfig._
-  import GrammarConfig._
 
-  // maps TextMate grammar scopes to Scaled style definitions
-  val effacers = List(
+  override def grammars = Map("source.ocaml" -> "ocaml.ndf")
+
+  override def effacers = List(
     effacer("comment.line", commentStyle),
     effacer("comment.block.string", stringStyle),
     effacer("comment.block", docStyle),
@@ -30,8 +31,6 @@ object OCamlConfig extends Config.Defs {
     effacer("support.other.module", moduleStyle),
     effacer("storage", variableStyle)
   )
-
-  val grammars = resource("ocaml.ndf")(Grammar.parseNDFs)
 }
 
 @Major(name="ml",
@@ -42,9 +41,7 @@ class OCamlMode (env :Env) extends GrammarCodeMode(env) {
 
   override def dispose () {} // nada for now
 
-  override def configDefs = OCamlConfig :: super.configDefs
-  override def grammars = OCamlConfig.grammars.get
-  override def effacers = OCamlConfig.effacers
+  override def langScope = "source.ocaml"
 
   override def keymap = super.keymap.
     bind("self-insert-command", "'"); // don't auto-pair single quote

@@ -35,7 +35,7 @@ class OCamlGrammarPlugin extends GrammarPlugin {
 
 @Major(name="ml",
        tags=Array("code", "project", "ml"),
-       pats=Array(".*\\.ml"),
+       pats=Array(".*\\.ml", ".*\\.mli"),
        desc="A major mode for editing OCaml code.")
 class OCamlMode (env :Env) extends GrammarCodeMode(env) {
 

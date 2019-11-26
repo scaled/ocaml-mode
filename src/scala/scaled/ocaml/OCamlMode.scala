@@ -39,7 +39,7 @@ class OCamlGrammarPlugin extends GrammarPlugin {
        desc="A major mode for editing OCaml code.")
 class OCamlMode (env :Env) extends GrammarCodeMode(env) {
 
-  override def dispose () {} // nada for now
+  override def dispose () :Unit = {} // nada for now
 
   override def langScope = "source.ocaml"
 
